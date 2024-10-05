@@ -1,0 +1,114 @@
+<div class="container">
+  <div class="table-wrapper">
+    <div class="table-title">
+      <div class="row">
+        <div class="col-sm-6">
+          <h2>Details User</h2>
+        </div>
+      </div>
+    </div>
+    <form [formGroup]="userForm">
+      <div class="modal-header">
+        <h4 class="modal-title" *ngIf="userForm.value.id">
+          Edit User {{ userForm.value.lastName }}
+        </h4>
+        <h4 class="modal-title" *ngIf="!userForm.value.id">Add User</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Last name</label>
+          <input
+            type="text"
+            formControlName="lastName"
+            class="form-control"
+            name="name"
+            [ngClass]="{
+              error: userForm.get('lastName')?.invalid && submited
+            }"
+          />
+        </div>
+        <div class="form-group">
+          <label>First name</label>
+          <input
+            type="text"
+            formControlName="firstName"
+            class="form-control"
+            [ngClass]="{
+              error: userForm.get('firstName')?.invalid && submited
+            }"
+            name="adresse"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input
+            type="email"
+            formControlName="email"
+            class="form-control"
+            name="adresse"
+            [ngClass]="{
+              error: userForm.get('email')?.invalid && submited
+            }"
+            required
+          />
+          <span *ngIf="userForm.get('email')?.invalid && submited"
+            >email required
+          </span>
+        </div>
+        <div class="form-group">
+          <label>phone number</label>
+          <input
+            type="number"
+            formControlName="phoneNumber"
+            class="form-control"
+            name="adresse"
+            [ngClass]="{
+              error: userForm.get('phoneNumber')?.invalid && submited
+            }"
+            required
+          />
+        </div>
+        <div class="form-group" *ngIf="!userForm.value.id">
+          <label>password</label>
+          <input
+            type="text"
+            formControlName="password"
+            class="form-control"
+            name="adresse"
+            [ngClass]="{
+              error: userForm.get('password')?.invalid && submited
+            }"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label>department</label>
+          <select
+            class="form-control"
+            [ngClass]="{
+              error: userForm.get('department')?.invalid && submited
+            }"
+            formControlName="department"
+          >
+            <option
+              [value]="department.id"
+              *ngFor="let department of departmentList"
+            >
+              {{ department.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        [disabled]="userForm.invalid"
+        <input
+          type="submit"
+          class="btn btn-success"
+          value="Save"
+          (click)="saveUser()"
+        />
+      </div>
+    </form>
+  </div>
+</div>

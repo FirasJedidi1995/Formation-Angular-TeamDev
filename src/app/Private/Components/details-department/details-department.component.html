@@ -1,0 +1,35 @@
+<div class="modal-content">
+  <form>
+    <div class="modal-header">
+      <h4 class="modal-title">ADD Department</h4>
+    </div>
+    <div class="modal-body">
+      <label>Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="name"
+        [(ngModel)]="department.name"
+        required
+      />
+      <div class="form-group">
+        <label>Address</label>
+        <input
+          type="text"
+          class="form-control"
+          name="address"
+          [(ngModel)]="department.adresse"
+          required
+        />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <input
+        type="submit"
+        class="btn btn-success"
+        value="Save"
+        (click)="saveDepartment()"
+      />
+    </div>
+  </form>
+</div>
